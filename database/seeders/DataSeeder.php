@@ -22,7 +22,7 @@ class DataSeeder extends Seeder
                 'description' => $faker->word, // Sinh tiêu đề sách với 3 từ
                 'price' => $faker->randomFloat(2, 1000, 1000000), // Tên tác giả
                 'quantity' => $faker->numberBetween(1, 100), // Số lượng từ 1 đến 100
-
+            ]);
         }
         foreach (range(1, 10) as $index) {
             DB::table('customers')->insert([
