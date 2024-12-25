@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // Chọn view hiển thị mặc định
-    return view('products.app');
+    return view('product.app');
 });
 
 // Route cho Customer
