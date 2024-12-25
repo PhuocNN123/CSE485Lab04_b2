@@ -16,11 +16,10 @@ class DataSeeder extends Seeder
     {
         $faker = Faker::create();
         foreach(range(1,10) as $index){
-            DB::table('product')->insert([
+            DB::table('products')->insert([
                 'name' => $faker->sentence(3), // Sinh tiêu đề sách với 3 từ
-                'author' => $faker->name, // Tên tác giả
-                'category' => $faker->word, // Một từ ngẫu nhiên làm thể loại
-                'year' => $faker->year, // Năm xuất bản
+                'description' => $faker->word, // Sinh tiêu đề sách với 3 từ
+                'price' => $faker->randomFloat(2, 1000, 1000000), // Tên tác giả
                 'quantity' => $faker->numberBetween(1, 100), // Số lượng từ 1 đến 100
             ]);
         }
