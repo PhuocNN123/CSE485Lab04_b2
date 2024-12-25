@@ -19,8 +19,7 @@
                         <a class="nav-link active" href="{{ route('customers.index') }}">Khách hàng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index', 1) }}">Sản phẩm</a>
-                    </li>
+                        <a class="nav-link" href="{{ url('/') }}">Trang chủ</a>                    </li>
                 </ul>
             </div>
         </div>
