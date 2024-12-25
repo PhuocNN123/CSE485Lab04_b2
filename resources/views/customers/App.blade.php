@@ -22,6 +22,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('customers.create') }}">Thêm mới</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('product.index') }}">Sản phẩm</a>
+                    </li>
                     
                 </ul>
             </div>
