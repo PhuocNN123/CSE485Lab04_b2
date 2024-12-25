@@ -12,23 +12,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // Lấy danh sách đơn hàng phân trang, 5 bản ghi mỗi trang
         $orders = Order::with('customer', 'details.product')->paginate(5);
     
-        // Trả về view và truyền dữ liệu $orders
         return view('orders.index', compact('orders'));
-    }
-
-    public function history()
-    {
-        // Lấy tất cả đơn hàng của khách hàng đã đăng nhập
-        // Bạn có thể thay thế `auth()->user()` bằng cách lấy khách hàng tùy theo logic của bạn
-        $orders = Order::where('customer_id', auth()->id()) // Giả sử bạn sử dụng auth để lấy khách hàng đã đăng nhập
-                        ->with('details.product') // Lấy chi tiết đơn hàng cùng với sản phẩm
-                        ->get();
-        
-        // Trả về view với thông tin các đơn hàng
-        return view('orders.history', compact('orders'));
     }
 
     /**
@@ -50,9 +36,11 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $order = Order::with('customer', 'details.product')->findOrFail($id);
+    
+        return view('orders.show', compact('order'));
     }
 
     /**

@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar or any common section here -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">My App</a>
@@ -20,7 +19,7 @@
                         <a class="nav-link active" href="{{ route('customers.index') }}">Khách hàng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('orders.history', 1) }}">Lịch sử đơn hàng</a>
+                        <a class="nav-link" href="{{ route('products.index', 1) }}">Sản phẩm</a>
                     </li>
                 </ul>
             </div>
@@ -28,11 +27,9 @@
     </nav>
 
     <div class="container mt-4">
-        <!-- Nội dung trang con sẽ được hiển thị ở đây -->
         @yield('content')
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
