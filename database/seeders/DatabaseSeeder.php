@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             dataSeeder::class,
         ]);
+        $this->call([
+            DataSeeder::class,
+        ]);
     }
 }

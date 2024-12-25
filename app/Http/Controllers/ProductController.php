@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(5); 
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -19,7 +21,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -27,7 +29,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|integer|min:0',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        Product::create($validated);
+
+        return redirect()->route('product.index')->with('success', 'Product added successfully!');
     }
 
     /**
@@ -35,7 +45,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $products = Product::findOrFail($id);
+        return view('product.show', compact('products'));
     }
 
     /**
@@ -43,7 +54,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $products = Product::findOrFail($id);
+        return view('product.edit', compact('products'));
     }
 
     /**
@@ -51,14 +63,31 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|integer|min:0',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $products = Product::findOrFail($id);
+        $products->update($validated);
+
+        return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request,string $id)
     {
-        //
+        $products = Product::find($id);
+
+        if (!$products) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        $products->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
 }

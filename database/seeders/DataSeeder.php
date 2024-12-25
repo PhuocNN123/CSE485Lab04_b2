@@ -15,15 +15,14 @@ class DataSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
+
+        foreach(range(1,10) as $index){
             DB::table('products')->insert([
-                'name' => $faker->words(3, true), // Tên sản phẩm (3 từ)
-                'description' => $faker->sentence(10), // Mô tả sản phẩm (10 từ)
-                'price' => $faker->randomFloat(2, 10, 1000), // Giá sản phẩm (từ 10 đến 1000, 2 chữ số thập phân)
-                'quantity' => $faker->numberBetween(1, 100), // Số lượng (1 đến 100)
-                'created_at' => now(), // Thời gian tạo
-                'updated_at' => now(), // Thời gian cập nhật
-            ]);
+                'name' => $faker->sentence(3), // Sinh tiêu đề sách với 3 từ
+                'description' => $faker->word, // Sinh tiêu đề sách với 3 từ
+                'price' => $faker->randomFloat(2, 1000, 1000000), // Tên tác giả
+                'quantity' => $faker->numberBetween(1, 100), // Số lượng từ 1 đến 100
+
         }
         foreach (range(1, 10) as $index) {
             DB::table('customers')->insert([
