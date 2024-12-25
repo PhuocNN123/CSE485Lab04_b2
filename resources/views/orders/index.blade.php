@@ -15,7 +15,7 @@
                 <th>Trạng thái</th>
                 <th>Sản phẩm</th>
                 <th>Tổng số lượng</th>
-                <th>Hành động</th>
+                <th>Lịch sử khách hàng</th>
             </tr>
         </thead>
         <tbody>
