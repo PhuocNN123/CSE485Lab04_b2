@@ -46,7 +46,7 @@ class DataSeeder extends Seeder
         foreach (range(1, 10) as $index) { // Giả sử thêm 20 bản ghi
             DB::table('order_details')->insert([
                 'order_id' => $faker->numberBetween(1, 10), // Giả sử bạn có 10 đơn hàng trong bảng 'orders'
-                'product_id' => $faker->numberBetween(1, 15), // Giả sử bạn có 15 sản phẩm trong bảng 'products'
+                'product_id' => $faker->numberBetween(1, 10), // Giả sử bạn có 10 sản phẩm trong bảng 'products'
                 'quantity' => $faker->numberBetween(1, 100), // Số lượng ngẫu nhiên từ 1 đến 100
                 'created_at' => now(),
                 'updated_at' => now(),
